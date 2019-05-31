@@ -1,0 +1,43 @@
+/*************************************************
+
+Step Number
+A number said to be step number if each and every digits in the number has absolute difference between its adjacent digit is one.
+
+sample input:
+12123454                                                                                                                                         
+output:
+yes 
+
+sample input:
+84927401
+sample output:
+no
+
+****************************************************/
+
+#include<stdio.h>
+#include <stdlib.h>
+int check(int *a , int N)
+{
+    for(int itr = 1; itr <N-1 ; itr++)
+    {
+        if(!(abs(a[itr]-a[itr-1])==1 && abs(a[itr]-a[itr+1])==1))
+        return 0;
+    }
+    return 1;
+}
+int main()
+{
+long long int num;
+scanf("%lld",&num);
+int a[9],index=0;
+while(num > 0)
+{
+    a[index++] = num%10;
+    num /= 10;
+}
+if(check(a,index))
+printf("yes");
+else
+printf("no");
+}
