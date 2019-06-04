@@ -1,0 +1,60 @@
+/*********************************************************************************
+Sample input/outpu 1:
+
+input:
+PROGRAM
+
+ouput:
+
+******G                                                                                                                                          
+*****GR                                                                                                                                          
+****GRA                                                                                                                                          
+***GRAM                                                                                                                                          
+**GRAMP                                                                                                                                          
+*GRAMPR                                                                                                                                          
+GRAMPRO      
+
+/********************************************************************************/
+#include<stdio.h>
+#include <stdlib.h>
+void star_(int count)
+{
+    while(count-- > 0)
+    printf("*");
+}
+
+int main()
+{
+char str[1001];
+scanf("%s",str);
+int len = 0, left, mid, count = 1, start;
+for(len = 0; str[len]; len++);
+mid = len / 2;
+left = len - 1;
+
+while(str[mid] != '\0')
+{ start = len / 2;
+star_(left);
+for(int itr = 1; itr <= count; itr++)
+printf("%c",str[start++]);
+++count;
+--left;
+++mid;
+printf("\n");
+}
+mid = len / 2;
+start = 0;
+count = 1;
+while(start < mid)
+{
+    star_(left--);
+    for(int itr = len/2; str[itr]; itr++)
+    printf("%c",str[itr]);
+    for(int itr = 0; itr <= start; itr++)
+    printf("%c",str[itr]);
+    printf("\n");
+    ++start;
+    
+}
+
+}
